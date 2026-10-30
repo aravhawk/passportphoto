@@ -1,3 +1,9 @@
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
+
+overrides:
+  # GHSA-mrhx-c7xc-m3w5: zod <4.6.6 is vulnerable. The 3.x copy pulled in by
+  # @imgly/background-removal is left alone (no 3.x fix; that package bundles its
+  # own zod at runtime anyway).
+  'zod@>=4.0.0 <4.6.6': 4.6.7
