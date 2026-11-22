@@ -34,6 +34,12 @@ Open http://localhost:3000.
 - The guides help you position the photo; the app does not automatically score compliance or detect faces.
 - Always review your photo against the latest official requirements: https://travel.state.gov/content/travel/en/passports/how-apply/photos.html
 
+## SEO and social metadata
+
+- The production domain is set once, in `src/lib/site.ts` (`SITE_URL`). `metadataBase`, canonical URLs, `og:url`, the sitemap, `robots.txt` and the JSON-LD all derive from it.
+- Each page sets its metadata with `pageMetadata()` from the same file, which emits the canonical URL, robots policy, Open Graph and Twitter tags together. A new public page also goes in `INDEXABLE_PATHS` so it reaches the sitemap.
+- The social card, icons and manifest are generated in code. See `src/app/_og/README.md`.
+
 ## Tech
 
 Next.js 16 (App Router, Turbopack) · React 19 · TypeScript · Tailwind CSS v4. Fully client-side; image processing uses the Canvas API.
